@@ -14,4 +14,6 @@ public interface EmployeeRepository extends JpaRepository<Employee, String> {
 	public Optional<Employee>  findByIdAndLogin(String id,String login);
 	@Query(value="SELECT * FROM employee e WHERE e.salary > ?1  AND e.salary <= ?2 ", nativeQuery = true)
 	public List<Employee> findBySalaryBetweenContaining(double minSalary,double maxSalary,Pageable page);
+	@Query(value="SELECT count(*) FROM employee e WHERE e.salary > ?1  AND e.salary <= ?2 ", nativeQuery = true)
+	public Integer findBySalaryBetweenContaining(double minSalary,double maxSalary);
 }

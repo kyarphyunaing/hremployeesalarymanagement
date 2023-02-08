@@ -64,19 +64,22 @@ public class EmployeeController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, path = "/users")
-	public synchronized ResponseEntity<List<Employee>> filteredEmployees(
+	public synchronized ResponseEntity<?> filteredEmployees(
 			@RequestParam(name = "minSalary") Optional<Double> minSalary, @RequestParam(name = "maxSalary") Optional<Double> maxSalary,
 			@RequestParam(name = "offset") Optional<Integer> offset, @RequestParam(name = "limit") Optional<Integer> limit,
 			@RequestParam(name = "sort")String sort) {
 		List<Employee> employeeList=new ArrayList<Employee>();
+		FilteredEmployeeResponse response=new FilteredEmployeeResponse();
 		try {
-			System.out.println(sort);
 			employeeList = employeeService.filteredEmployees(minSalary.orElse(0.0).doubleValue(),
-					maxSalary.orElse(10000.0).doubleValue(), offset.orElse(0), limit.orElse(5000),sort);
+					maxSalary.orElse(100000.0).doubleValue(), offset.orElse(0), limit.orElse(5000),sort);
 			if (employeeList.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 			}
-			return new ResponseEntity<>(employeeList, HttpStatus.OK);
+			response.setCountOfEmployees(employeeService.filteredCountOfEmployees(minSalary.orElse(0.0).doubleValue(),
+					maxSalary.orElse(100000.0).doubleValue()));
+			response.setEmployees(employeeList);
+			return new ResponseEntity<>(response, HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);

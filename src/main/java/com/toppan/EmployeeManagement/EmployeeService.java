@@ -50,6 +50,14 @@ public class EmployeeService {
 		
 		
 	}
+	public Integer filteredCountOfEmployees(double minSalary, double maxSalary) {
+		try {
+			return repository.findBySalaryBetweenContaining(minSalary, maxSalary);
+		}catch(Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e.getMessage());
+		}
+	}
 	public Optional<Employee> findEmployeeById(String id) {
 		return repository.findById(id);
 	}
