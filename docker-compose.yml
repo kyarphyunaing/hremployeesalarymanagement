@@ -1,0 +1,39 @@
+version: '3.8'
+
+services: 
+    mysqldb:
+      image: mysql:latest
+      restart: unless-stopped
+      environment:
+        - MYSQL_ROOT_PASSWORD=#Admin123
+        - MYSQL_DATABASE=employeedb
+      ports:
+        - 3306:3306
+      volumes:
+        - db:/var/lib/mysql
+    app:
+      depends_on:
+        - mysqldb
+      build: .
+      restart: on-failure
+      ports: 
+        - 8080:8080
+      volumes:
+        - .m2:/springbot/.m2
+      stdin_open: true
+      tty: true
+      links:
+        - mysqldb
+    frontend:
+      depends_on:
+        - mysqldb
+        - app
+      build: ./frontend/
+      restart: on-failure
+      ports: 
+        - 4200:4200
+      links:
+        - app
+volumes:
+  db:
+  
