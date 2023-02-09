@@ -59,10 +59,25 @@ It take a while to recreate the docker image with updated source and deps.
 ## Usage
 Now a REST service is running a port on your machine and you can consume them as per followed.
 
-	1.
-	2.
-	3.
-	4.
+	1. CSV File Upload Web Service : http://localhost:8080/users/upload?file 
+	   (In employee table, id and login are unique numbers so added backend business logic in service layer for a complex use case of swapping logins between 2 IDs. Moreover, it is added to satify for csv in empty row case, employee column case, comment row case, and so on)
+	2. Filtered Employee Web Service : http://localhost:8080/users/users?minSalary=0&maxSalary=4000&offset=0&limit=30&sort=+id
+	   (For this webservice, multiple requests are called to backend when clicking features of datatable but it might be to test paging or sorting concepts for this assessment. This service is modified a little to get total employees for pages of datatable in response body. )
+	3. Creating Employee Web Service : http://localhost:8080/users/user
+	   (It can be requested by json request body
+	    {
+   			"id": "e11",
+    		"login": "john",
+    		"name": "john smith",
+    		"salary": "1400.50"
+		}.)
+	4. Retrieving Employee Web Service : http://localhost:8080/users/user?id=1
+	5. Updating Employee Web Service : http://localhost:8080/users/user?id=2&login=CeCee&name=CeCee&salary=1300.50 
+	6. Deleting Employee Web Service : http://localhost:8080/users/user
+	   (It can be requested by json request body
+	   {
+    		"id": "e02"
+		}. It is more appropriate for adding request body instead of request params avoiding from other distraction requests.)
 
 <!-- CONTRIBUTING -->
 ## Contributing
