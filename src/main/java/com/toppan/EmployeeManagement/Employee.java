@@ -7,28 +7,28 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "employee")
-public class Employee{
-	
+public class Employee {
+
 	@Id
-	@Column(name = "id",unique=true,nullable = false)
+	@Column(name = "id", unique = true, nullable = false)
 	private String id;
 
-	@Column(name = "login",unique=true,nullable = false)
+	@Column(name = "login", unique = true, nullable = false)
 	private String login;
 
-	@Column(name = "name",nullable = false)
+	@Column(name = "name", nullable = false)
 	private String name;
 
-	@Column(name = "salary",nullable = false)
+	@Column(name = "salary", nullable = false)
 	private double salary;
 
 	public Employee() {
 
 	}
 
-	public Employee(String id,String login, String name, double salary) {
+	public Employee(String id, String login, String name, double salary) {
 		super();
-		this.id=id;
+		this.id = id;
 		this.login = login;
 		this.name = name;
 		this.salary = salary;
@@ -68,8 +68,7 @@ public class Employee{
 
 	@Override
 	public String toString() {
-		return "Employee [ id=" + id + ", login=" + login + ", name=" + name + ", salary="
-				+ salary + "]";
+		return "Employee [ id=" + id + ", login=" + login + ", name=" + name + ", salary=" + salary + "]";
 	}
-	
+
 }

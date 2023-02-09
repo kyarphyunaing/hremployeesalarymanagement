@@ -25,5 +25,4 @@ public class ResponseMessage {
 	public void setReason(String reason) {
 		this.reason = reason;
 	}
-
 }
