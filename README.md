@@ -7,12 +7,12 @@ that API.
 You may need to install the following tools before you clone this repository into your development machine. 
 
 ### Prerequisites
-  1. OpenJDK 18 ( https://openjdk.org/projects/jdk/ )
-	2. Maven ( https://maven.apache.org/download.cgi ) 
-	3. NodeJS ( https://nodejs.org/en/ )
-	4. Angular CLI ( https://angular.io/cli )
-	5. Mysql Server ( https://dev.mysql.com/downloads/mysql/ ) 
-	6. Docker and Docker Compose ( https://www.docker.com/products/docker-desktop/ )
+1. OpenJDK 18 ( https://openjdk.org/projects/jdk/ )
+2. Maven ( https://maven.apache.org/download.cgi ) 
+3. NodeJS ( https://nodejs.org/en/ )
+4. Angular CLI ( https://angular.io/cli )
+5. Mysql Server ( https://dev.mysql.com/downloads/mysql/ ) 
+6. Docker and Docker Compose ( https://www.docker.com/products/docker-desktop/ )
 
 ### Installation
 We are using maven and spring boot and we may need to install some maven packages before any development.
